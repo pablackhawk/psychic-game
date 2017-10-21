@@ -10,12 +10,13 @@ var incorrectGuess = []
 var correct = 0;
 var incorrect = 0;
 var choices = 10;
-//var computerGuess = "";
+
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+console.log(computerGuess);
 
 function pickyPick() {
 	computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-	console.log(computerGuess)	
+	console.log(computerGuess);	
 };
 
 alert("Make a selection! Guess what I have chosen!");
@@ -35,7 +36,6 @@ function gameReset() {
 
 function victory() {
 	choices = 10;
-	correct = 0;
 	incorrect = 0;
 	incorrectGuess = [];
 	alert("Play Again?");
@@ -47,9 +47,9 @@ function victory() {
 
 document.onkeyup = function(event) {
 	var userGuess = event.key;
-	//pickyPick();
+	
 
-	if(choices > 1){
+	if(choices > 0){
 		if(userGuess === computerGuess){
 			correct++;
 			incorrectGuess = [];
@@ -68,8 +68,7 @@ document.onkeyup = function(event) {
 		}
 
 
-	var html ="<h1>The Psychic Game</h1>" +
-			"<h2> Make a selection! Guess what I have Chosen!</h2>" +
+	var html =
 			"<p> You chose: " + userGuess + "</p>" +
 			"<p> Correct: " + correct + "</p>" +
 			"<p> Incorrect: " + incorrect + "</p>" +
@@ -77,4 +76,5 @@ document.onkeyup = function(event) {
 			"<p> Your past guesses: " + incorrectGuess + "</p>"
 
 		document.querySelector("#game").innerHTML = html;
+
 }
